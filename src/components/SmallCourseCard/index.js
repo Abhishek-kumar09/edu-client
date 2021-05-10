@@ -30,7 +30,7 @@ export default function MediaCard(props) {
       <CardActionArea className={classes.card} onClick={() => history.push(`/course/${props.id}`)}>
         <CardMedia
           className={classes.media}
-          image={props.data.image}
+          image="http://localhost:3000/assets/img/home.png"
           title="Contemplative Reptile"
         />
         <CardContent>
@@ -41,7 +41,7 @@ export default function MediaCard(props) {
             {props.data.level}
           </Typography>
           <Typography className={classes.level} variant="body2" color="textSecondary" component="p">
-            {props.data.length} hrs of content
+            {props.data.duration} {/* hrs of content */}
           </Typography>
           <div
             style={{
@@ -51,7 +51,8 @@ export default function MediaCard(props) {
             }}
           >
             <Typography variant="body2" color="textSecondary" component="p">
-              $ {props.data.price}
+              Temp price
+              {/* $ {props.data.} */}
             </Typography>
             <FavoriteIcon style={{ color: "#AD0517" }} />
           </div>

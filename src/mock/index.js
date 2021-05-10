@@ -1,1 +1,2 @@
 import "./projectMock";
+import "./courseMock";

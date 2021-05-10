@@ -1,6 +1,6 @@
 import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
-import { makeStyles, Typography } from "@material-ui/core";
+import { Box, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -57,9 +57,11 @@ function Search({ data, placeholder }) {
       </div>
       <div className={classes.tags}>
         {data.map((item, i) => (
-          <Typography variant="body1" className={classes.tag} key={i}>
-            {item}
-          </Typography>
+          <Box key={i}>
+            <Typography variant="body1" className={classes.tag}>
+              {item}
+            </Typography>
+          </Box>
         ))}
       </div>
     </div>

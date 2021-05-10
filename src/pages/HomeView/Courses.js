@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MediaCard from "../../components/SmallCourseCard";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "../../utils/mockaxios";
 
 const data = Array(10).fill({
   id: 1,
@@ -34,13 +35,32 @@ const useStyles = makeStyles({
 
 function Recommended() {
   const classes = useStyles();
+  const [courses, setCourses] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("/api/courses/all")
+      .then((result) => {
+        setCourses(result.data);
+        console.log(Object.values(result.data.foundation));
+      })
+      .catch((e) => {
+        console.log("result error", e);
+      });
+  }, []);
+
+  if (courses === null) {
+    console.log(courses);
+    return "";
+  }
+
   return (
     <>
       <Typography className={classes.mainHeading} gutterBottom variant="h5" component="h2">
         Recommended Courses
       </Typography>
       <div className={classes.container}>
-        {data.map((item, i) => (
+        {Object.values(courses.foundation).map((item, i) => (
           <MediaCard key={i} data={item} />
         ))}
       </div>
